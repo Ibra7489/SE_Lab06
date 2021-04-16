@@ -4,7 +4,7 @@
 
 using namespace std;
 
-    class Complex
+class Complex
 
 {
     double Re;
