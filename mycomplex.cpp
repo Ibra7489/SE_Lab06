@@ -1,159 +1,160 @@
 #include <iostream>
 #include <cmath>
-#include "mycomplex.h"
+#include "mycomplex.h"      //подключаем свой файл №3
 
 using namespace std;
 
-Complex :: Complex(double aRe , double aIm)
+Complex :: Complex(double aRe , double aIm)  //описание конструктора записи изменяемой действительной и мнимой части(Re и Im)-ничего не возвращает
 {
-    Re = aRe;
-    Im = aIm;
+    Re = aRe;//запись параметра действительной части
+    Im = aIm;//запись параметра мнимой части
 }
 
-Complex :: Complex(const Complex & aRval)
+Complex :: Complex(const Complex & aRval)//описание конструктора копирования(передача по ссылке)
 {
-    Re = aRval.Re;
-    Im = aRval.Im;
+    Re = aRval.Re;//запись параметра действительной части
+    Im = aRval.Im;//запись параметра мнимой части
 }
 
-Complex :: ~Complex()
+Complex :: ~Complex()//описание деструктора класса, очистка памяти
 {
     Re = 0.0;
     Im = 0.0;
 }
 
-void Complex :: Set(double aRe, double aIm)
+void Complex :: Set(double aRe, double aIm)//описание метода саттера
 {
-    Re = aRe;
-    Im = aIm;
+    Re = aRe;//запись параметра действительной части
+    Im = aIm;//запись параметра мнимой части
 }
 
-Complex :: operator double()
+Complex :: operator double()//описание метода operator
 {
-    return abs();
-}
-    double Complex :: abs()
-{
-    return sqrt(Re * Re + Im * Im);
+    return abs();//возвращает значение метода вычисления модуля комплексного числа
 }
 
-Complex Complex :: operator + (const Complex & aRval)
+    double Complex :: abs()//описание метода вычисления модуля комплексного числа
 {
-    Complex Result;
-    Result.Re = Re + aRval.Re;
-    Result.Im = Im + aRval.Im ;
-    return Result;
+    return sqrt(Re * Re + Im * Im);//возвращает значение модуля
 }
 
-Complex Complex :: operator - (const Complex & aRval)
+Complex Complex :: operator + (const Complex & aRval)//описание оператора сложения, комплексная переменная
 {
-    Complex Result;
-    Result.Re = Re - aRval.Re;
-    Result.Im = Im - aRval.Im;
-    return Result;
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = Re + aRval.Re;//запись переменной Result параметра действительной части
+    Result.Im = Im + aRval.Im ;//запись переменной Result параметра мнимой части
+    return Result;//возвращение записанных параметров действительной и мнимой части
+}
+Complex Complex :: operator - (const Complex & aRval)//описание оператора вычитания, комплексная переменная
+{
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = Re - aRval.Re;//запись переменной Result параметра действительной части
+    Result.Im = Im - aRval.Im;//запись переменной Result параметра мнимой части
+    return Result;//возвращение записанных параметров действительной и мнимой части
 }
 
-Complex Complex :: operator + (const double & aRval)
+Complex Complex :: operator + (const double & aRval)//описание оператора сложения, действительная переменная
 {
-    Complex Result;
-    Result.Re = Re + aRval;
-    Result.Im = Im;
-    return Result;
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = Re + aRval;//запись переменной Result параметра действительной части
+    Result.Im = Im;//мнимая часть без изменений
+    return Result;//возвращение записанных параметров действительной и мнимой части
 }
 
-Complex Complex :: operator - (const double & aRval)
+Complex Complex :: operator - (const double & aRval)//описание оператора вычитания, действительная переменная
 {
-    Complex Result( * this);
-    Result.Re = Re - aRval;
-    return Result;
+    Complex Result( * this);//создание переменной Result класса Complex с указателем объекта на самого себя
+    Result.Re = Re - aRval;//запись переменной Result параметра действительной части
+    return Result;//возвращение записанных параметров действительной части
 }
 
-Complex Complex  :: operator * (const Complex & aRval)
+Complex Complex  :: operator * (const Complex & aRval)//описание оператора умножения, комплексная переменная
 {
-    Complex Result;
-    Result.Re = Re * aRval.Re - Im * aRval.Im;
-    Result.Im = Re * aRval.Im + Im * aRval.Re;
-    return Result;
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = Re * aRval.Re - Im * aRval.Im;//запись переменной Result параметра действительной части
+    Result.Im = Re * aRval.Im + Im * aRval.Re;//запись переменной Result параметра мнимой части
+    return Result;//возвращение записанных параметров действительной и мнимой части
 }
 
-Complex Complex :: operator * (const double & aRval)
+Complex Complex :: operator * (const double & aRval)//описание оператора умножения,действительная переменная
 {
-    Complex Result;
-    Result.Re = Re * aRval;
-    Result.Im = Im * aRval;
-    return Result;
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = Re * aRval;//запись переменной Result параметра действительной части
+    Result.Im = Im * aRval;//запись переменной Result параметра мнимой части
+    return Result;//возвращение записанных параметров действительной и мнимой части
 }
 
-Complex Complex :: operator / (const double & aRval)
+Complex Complex :: operator / (const double & aRval)//описание оператора деления,действительная переменная
 {
-    Complex Result;
-    Result.Re = Re / aRval;
-    Result.Im = Im / aRval;
-    return Result;
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = Re / aRval;//запись переменной Result параметра действительной части
+    Result.Im = Im / aRval;//запись переменной Result параметра мнимой части
+    return Result;//возвращение записанных параметров действительной и мнимой части
 }
 
-Complex & Complex :: operator += (const Complex & aRval)
+Complex & Complex :: operator += (const Complex & aRval)//описание оператора +=, комплексная переменная
 {
-    Re += aRval.Re;
-    Im += aRval.Im;
-    return *this;
+    Re += aRval.Re;//запись параметра действительной части
+    Im += aRval.Im;//запись параметра мнимой части
+    return *this;//возвращение указателя на самого себя
 }
 
-Complex & Complex :: operator -= (const Complex & aRval)
+Complex & Complex :: operator -= (const Complex & aRval)//описание оператора -=, комплексная переменная
 {
-    Re -= aRval.Re;
-    Im -= aRval.Im;
-    return *this;
+    Re -= aRval.Re;//запись параметра действительной части
+    Im -= aRval.Im;//запись параметра мнимой части
+    return *this;//возвращение указателя на самого себя
 }
 
-Complex & Complex :: operator *= (const Complex & aRval)
+Complex & Complex :: operator *= (const Complex & aRval)//описание оператора *=, комплексная переменная
 {
     double tmpRe = Re;
-    Re = Re * aRval.Re - Im * aRval.Im;
-    Im = Im * aRval.Re + tmpRe * aRval.Im;
-    return *this;
+    Re = Re * aRval.Re - Im * aRval.Im;//запись параметра действительной части
+    Im = Im * aRval.Re + tmpRe * aRval.Im;//запись параметра мнимой части
+    return *this;//возвращение указателя на самого себя
 }
 
-Complex & Complex :: operator += (const double & aRval)
+Complex & Complex :: operator += (const double & aRval)//описание оператора +=, действительная переменная
 {
-    Re += aRval;
-    return *this;
+    Re += aRval;//запись параметра действительной части
+    return *this;//возвращение указателя на самого себя
 }
 
-Complex & Complex :: operator -= (const double & aRval)                                      {
-    Re -= aRval;
-    return *this;
-}
-
-Complex & Complex :: operator *= (const double & aRval)
+Complex & Complex :: operator -= (const double & aRval)//описание оператора -=, действительная переменная
 {
-    Re *= aRval;
-    Im *= aRval;
-    return *this;
+    Re -= aRval;//запись параметра действительной части
+    return *this;//возвращение указателя на самого себя
 }
 
-Complex & Complex :: operator /= (const double & aRval)
+Complex & Complex :: operator *= (const double & aRval)//описание оператора *=, действительная переменная
 {
-    Re /= aRval;
-    Im /= aRval;
-    return *this;
+    Re *= aRval;//запись параметра действительной части
+    Im *= aRval;//запись параметра мнимой части
+    return *this;//возвращение указателя на самого себя
 }
 
-Complex & Complex :: operator = (const Complex & aRval)
+Complex & Complex :: operator /= (const double & aRval)//описание оператора /=, действительная переменная
 {
-    Re = aRval.Re;
-    Im = aRval.Im;
-    return *this;
+    Re /= aRval;//запись параметра действительной части
+    Im /= aRval;//запись параметра мнимой части
+    return *this;//возвращение указателя на самого себя
 }
 
-Complex & Complex :: operator = (const double & aRval)
+Complex & Complex :: operator = (const Complex & aRval)//описание оператора присваивания, комплексная переменная
 {
-    Re = aRval;
-    Im = 0.0;
-    return *this;
+    Re = aRval.Re;//запись параметра действительной части
+    Im = aRval.Im;//запись параметра мнимой части
+    return *this;//возвращение указателя на самого себя
 }
 
-istream & operator >> (istream & stream, Complex & aRval)
+Complex & Complex :: operator = (const double & aRval)//описание оператора присваивания, действительная переменная
+{
+    Re = aRval;//запись параметра действительной части
+    Im = 0.0;//обнуление мнимой части
+    return *this;//возвращение указателя на самого себя
+}
+
+istream & operator >> (istream & stream, Complex & aRval)//перегрузка оператора >>
 {
     char tmp[256];
     stream >> aRval.Re >>
@@ -161,7 +162,7 @@ istream & operator >> (istream & stream, Complex & aRval)
     return stream;
 }
 
-ostream & operator << (ostream & stream, Complex & aRval)
+ostream & operator << (ostream & stream, Complex & aRval)//перегрузка оператора <<
 {
     stream << aRval.Re;
     if (!(aRval.Im < 0))
@@ -170,26 +171,26 @@ ostream & operator << (ostream & stream, Complex & aRval)
     return stream;
 }
 
-Complex operator + (const double & aLval, const Complex & aRval)
+Complex operator + (const double & aLval, const Complex & aRval)//описание оператора сложения, одна действительная переменная и одна комплексная переменная
 {
-    Complex Result;
-    Result.Re = aLval + aRval.Re;
-    Result.Im = aRval.Im;
-    return Result;
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = aLval + aRval.Re;//запись переменной Result параметра действительной части
+    Result.Im = aRval.Im;//запись переменной Result параметра мнимой части
+    return Result;//возвращение записанных параметров действительной и мнимой части
 }
 
-Complex operator - (const double & aLval, const Complex & aRval)
+Complex operator - (const double & aLval, const Complex & aRval)//описание оператора вычитания, одна действительная переменная и одна комплексная переменная
 {
-    Complex Result;
-    Result.Re = aLval - aRval.Re;
-    Result.Im = -aRval.Im;
-    return Result;
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = aLval - aRval.Re;//запись переменной Result параметра действительной части
+    Result.Im = -aRval.Im;//запись переменной Result параметра мнимой части
+    return Result;//возвращение записанных параметров действительной и мнимой части
 }
 
-Complex operator * (const double & aLval, const Complex & aRval)
+Complex operator * (const double & aLval, const Complex & aRval)//описание оператора умножения, одна действительная переменная и одна комплексная переменная
 {
-    Complex Result;
-    Result.Re = aLval * aRval.Re;
-    Result.Im = aLval * aRval.Im;
-    return Result;
+    Complex Result;//создание переменной Result класса Complex
+    Result.Re = aLval * aRval.Re;//запись переменной Result параметра действительной части
+    Result.Im = aLval * aRval.Im;//запись переменной Result параметра мнимой части
+    return Result;//возвращение записанных параметров действительной и мнимой части
 }

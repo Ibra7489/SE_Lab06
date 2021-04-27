@@ -1,25 +1,24 @@
 #include <iostream>
-#include "mycomplex.h"
+#include "mycomplex.h"                 //подключаем свой файл є3
 
 using namespace std;
 
-int main(){//тестирование класса комплексных чисел
-    Complex A, B(-4), C(23.0, 45.9);
-    cout << A << "," << B << "," << C << endl;
+int main()                      //главна€ функци€
+{
+    Complex A, B(-4), C(23.0, 45.9);             //объ€вление комплексных переменных: A-просто объ€вл€ем; B=-4; C=23.0
 
-    A = B + C;
-    cout << "A = B + C, A = " << A << endl;
+    cout << A << "," << B << "," << C << endl;       //вывод данных A,B,C на экран
+    A = B + C;                          //расчет переменной A
+    cout << "A = B + C, A = " << A << endl;          //вывод переменной A после расчета
+    Complex M = B - C;                   //расчет и объ€вление комплексной переменной M
+    cout << "M = B - C, M = " << M << endl;      //вывод переменной M после расчета
+    cout << "M * A = " << M * A << endl;         //вывод произведени€ переменных M и A
+    cout << "M / 4.45 = " << M / 4.45 << endl;      //вывод частного от делени€ M на 4.45
 
-    Complex M = B - C;
-    cout << "M = B - C, M = " << M << endl;
-    cout << "M * A = " << M * A << endl;
-    cout << "M / 4.45 = " << M / 4.45 << endl;
-
-    Complex D;
-  	cout << "Enter complex number D = ";
-  	cin >> D;
-    A += C + D;
-    cout << "D = " << D << "\nA = " << A << endl;
-
-    return 0;
+    Complex D;                        //объ€вление комплексной переменной D
+  	cout << "Enter complex number D = ";           //просим ввести комплексную переменную D
+  	cin >> D;                         //считываем переменную D
+    A += C + D;                       //прибавл€ем к ранее посчитанной переменной A сумму переменной C и D
+    cout << "D = " << D << "\nA = " << A << endl;      //вывод переменной D и A
+    return 0;                         //возвращает 0
 }
