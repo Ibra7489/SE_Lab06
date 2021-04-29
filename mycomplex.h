@@ -15,23 +15,23 @@ public:                                //тип доступа к описанным ниже методам(об
     Complex (const Complex & );                      //объявление конструктора копирования
     ~Complex();                                   //объявление деструктора, очистка памяти
 
-void Set(double aRe, double aIm = 0);                            //объявление метода сеттера
+    void Set(double aRe, double aIm = 0);                            //объявление метода сеттера
     operator double();                              //объявление operator
     double abs();                                //объявление метода вычисления модуля компексного числа
 
-friend istream & operator >> (istream &, Complex &);             //объявление дружественных операторов, которым мы разрешаем доступ
-friend ostream & operator << (ostream &, Complex &);             //к закрытым переменным
+    friend istream & operator >> (istream &, Complex &);             //объявление дружественных операторов, которым мы разрешаем доступ
+    friend ostream & operator << (ostream &, Complex &);             //к закрытым переменным
 
     Complex operator + (const Complex &);                       //объявление оператора сложения, комплексная переменная
     Complex operator - (const Complex &);                       //объявление оператора вычитания, комплексная переменная
     Complex operator + (const double &);                        //объявление оператора сложения, действительная переменная
 
-friend Complex operator + (const double &, const Complex &);       //объявление дружественного оператора сложения, одна действительная переменная и одна комплексная переменная
+    friend Complex operator + (const double &, const Complex &);       //объявление дружественного оператора сложения, одна действительная переменная и одна комплексная переменная
     Complex operator - (const double &);                      //объявление оператора вычитания, действительная переменная
-friend Complex operator - (const double &, const Complex &);    //объявление дружественного оператора вычитания, одна действительная переменная и одна комплексная переменная
+    friend Complex operator - (const double &, const Complex &);    //объявление дружественного оператора вычитания, одна действительная переменная и одна комплексная переменная
     Complex operator * (const Complex &);                    //объявление оператора умножения, комплексная переменная
     Complex operator * (const double &);                    //объявление оператора умножения, действительная переменная
-friend Complex operator * (const double &, const Complex &);    //объявление дружественного оператора умножения, одна действительная переменная и одна комплексная переменная
+    friend Complex operator * (const double &, const Complex &);    //объявление дружественного оператора умножения, одна действительная переменная и одна комплексная переменная
     Complex operator / (const double &);                     //объявление оператора деления, действительная переменная
 
     Complex & operator += (const Complex &);               //объявление оператора +=, комплексная переменная
